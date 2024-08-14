@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="registerForm">
+    
+    <ion-item>
+      <ion-label position="floting" >Nombres *</ion-label>
+      <ion-input formControlName="names"/>
+      <ion-note class="form-erro-message">El campo es requerido</ion-note>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floting">Apellidos *</ion-label>
+      <ion-input  formControlName="lastNames"/>
+      <ion-note class="form-erro-message">El campo es requerido</ion-note>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floting" >Correo electronico *</ion-label>
+      <ion-input type="email" formControlName="email"/>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floting" >Contraseña *</ion-label>
+      <ion-input type="password" formControlName="password"/>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floting" >Número de identidad *</ion-label>
+      <ion-input type="number" formControlName="idNumber"/>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floting" >Número de telefono *</ion-label>
+      <ion-input type="number" formControlName="phoneNumber"/>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" color="success" [disabled]="isFormValid">      
+      <ion-spinner *ngIf="spinner"/>
+      Reistrar
+    </ion-button>
+  
+  </form>
+</ion-content>
