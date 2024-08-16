@@ -1,5 +1,5 @@
 
-import { Component, inject } from '@angular/core';
+import { Component, inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar } from '@ionic/angular/standalone';
@@ -15,6 +15,8 @@ import { RegisterDto } from '../../models/register.dto';
 export class RegisterPage {
 
   asteriscoReq:string='*'
+  textBtnRegister:string='Registrarse'
+  spinner:boolean=false
   
   private formBuilder: FormBuilder= inject(FormBuilder)
   registerDto: RegisterDto= {} as RegisterDto
@@ -83,16 +85,20 @@ export class RegisterPage {
     return control ? control.hasError('minLength') && control.touched : false
   }
 
-  spinner:boolean=false
+ 
 
   save():void{
+    this.textBtnRegister='Registrando Usuario'
     this.registerDto= this.registerForm.value as RegisterDto
+    
     console.log('Datos:', this.registerDto)
+    
     this.spinner=true
+
     setTimeout(() => {
       this.registerForm.reset()
       this.spinner=false
-    }, 2000);
+    }, 10000);
   }
 
 

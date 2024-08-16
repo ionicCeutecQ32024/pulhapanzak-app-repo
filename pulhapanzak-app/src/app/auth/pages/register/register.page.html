@@ -57,7 +57,7 @@
     <ion-item>
       <div>
         <ion-label position="floting">Número de telefono <span class="asterisco">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="number" formControlName="phoneNumber" placeholder="ej: 33481485"/>
+        <ion-input type="numeric" formControlName="phoneNumber" placeholder="ej: 33481485"/>
         <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength" class="form-error-message">
           <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
           <span *ngIf="isPhoneNumberMinLength">Ingrese un número telefono valido</span>
@@ -66,9 +66,9 @@
     </ion-item>
     
     <div class="formFooter">
-      <ion-button type="numeric" class="btnRegister" color="danger" [disabled]="isFormValid">      
-        <ion-spinner *ngIf="spinner" color="dark"/>
-        Registrar
+      <ion-button type="ngSubmit" #btnRegister class="btnRegister" color="danger" [disabled]="isFormValid">      
+        <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
+        {{textBtnRegister}}
       </ion-button>
     </div>
   </form>
