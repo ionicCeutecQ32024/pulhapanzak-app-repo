@@ -65,14 +65,14 @@ export class RegisterPage {
     return control ? control.hasError('required') && control.touched : false
   }
 
-  get isDniMinLength():boolean{
-    const control: AbstractControl | null = this.registerForm.get('dni')
-    return control ? control.hasError('minLength') && control.touched : false
+  get isDniMinLength(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('dni');
+    return control ? control.hasError('minlength') && control.touched : false;
   }
 
-  get isDniMaxLength():boolean{
-    const control: AbstractControl | null = this.registerForm.get('dni')
-    return control ? control.hasError('maxLength') && control.touched : false
+  get isDniMaxLength(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('dni');
+    return control ? control.hasError('maxlength') && control.touched : false;
   }
 
   get isPhoneNumberRequired():boolean{
@@ -82,7 +82,7 @@ export class RegisterPage {
 
   get isPhoneNumberMinLength():boolean{
     const control: AbstractControl | null = this.registerForm.get('phoneNumber')
-    return control ? control.hasError('minLength') && control.touched : false
+    return control ? control.hasError('maxlength') && control.touched : false
   }
 
  
@@ -98,7 +98,8 @@ export class RegisterPage {
     setTimeout(() => {
       this.registerForm.reset()
       this.spinner=false
-    }, 10000);
+      this.textBtnRegister='Registrarse'
+    }, 5000);
   }
 
 
