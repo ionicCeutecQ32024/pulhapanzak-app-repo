@@ -27,8 +27,8 @@ export class RegisterPage {
     lastNames: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
-    dni: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13)]],
-    phoneNumber: ['', [Validators.required, Validators.minLength(8)]]
+    dni: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13), Validators.pattern('^[0-9]+$')]],
+    phoneNumber: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^[0-9]+$')]]
   })
 
   get isFormValid():boolean{ 
@@ -75,16 +75,15 @@ export class RegisterPage {
     return control ? control.hasError('maxlength') && control.touched : false;
   }
 
-  get isPhoneNumberRequired():boolean{
-    const control: AbstractControl | null = this.registerForm.get('phoneNumber')
-    return control ? control.hasError('required') && control.touched : false
+  get isPhoneNumberRequired(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('phoneNumber');
+    return control ? control.hasError('required') && control.touched : false;
   }
-
-  get isPhoneNumberMinLength():boolean{
-    const control: AbstractControl | null = this.registerForm.get('phoneNumber')
-    return control ? control.hasError('maxlength') && control.touched : false
+  
+  get isPhoneNumberMinLength(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('phoneNumber');
+    return control ? control.hasError('minlength') && control.touched : false;
   }
-
  
 
   save():void{
