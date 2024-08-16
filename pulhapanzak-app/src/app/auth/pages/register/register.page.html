@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -14,48 +8,68 @@
   <form [formGroup]="registerForm" (ngSubmit)="save()">
     
     <ion-item>
-      <ion-label position="floting">Nombres *</ion-label>
-      <ion-input formControlName="names" placeholder="ej: Luis Eduardo"/>
-      <ion-note *ngIf="isNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      <div>
+        <ion-label >Nombres <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input formControlName="names" placeholder="ej: Luis Eduardo"/>
+        <ion-note *ngIf="isNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floting">Apellidos *</ion-label>
-      <ion-input  formControlName="lastNames" placeholder="ej: Perez Lozano"/>
-      <ion-note *ngIf="isLastNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      <div>
+        <ion-label position="floting">Apellidos <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input  formControlName="lastNames" placeholder="ej: Perez Lozano"/>
+        <ion-note *ngIf="isLastNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
     </ion-item>
     
     <ion-item>
-      <ion-label position="floting">Correo electronico *</ion-label>
-      <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
-      <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
-        <span *ngIf="isEmailRequired">El campo es requerido</span>
-        <span *ngIf="isEmailValid">Ingrese un correo valido</span>
-      </ion-note>
+      <div>
+        <ion-label position="floting">Correo electronico <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
+        <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
+          <span *ngIf="isEmailRequired">El campo es requerido</span>
+          <span *ngIf="isEmailValid">Ingrese un correo valido</span>
+        </ion-note>
+      </div>
     </ion-item>
     
     <ion-item>
-      <ion-label position="floting">Contraseña *</ion-label>
-      <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#"/>
-      <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
+      <div>
+        <ion-label position="floting">Contraseña <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#"/>
+        <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
     </ion-item>
     
     <ion-item>
-      <ion-label position="floting">Número de identidad *</ion-label>
-      <ion-input type="number" formControlName="dni" placeholder="ej: 0801199710100"/>
-      <ion-note *ngIf="isDniRequired" class="form-error-message">El campo es requerido</ion-note>
+      <div>
+        <ion-label position="floting">Número de identidad <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="numeric" formControlName="dni" placeholder="ej: 0801199710100"/>
+        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength" class="form-error-message">
+          <span *ngIf="isDniRequired">El campo es requerido</span>
+          <span *ngIf="isDniMinLength">Ingrese un DNI valido</span>
+          <span *ngIf="isDniMaxLength">Ingrese un DNI valido</span>
+        </ion-note>
+      </div>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floting">Número de telefono *</ion-label>
-      <ion-input type="number" formControlName="phoneNumber" placeholder="ej: 33481485"/>
-      <ion-note *ngIf="isPhoneNumberRequired" class="form-error-message">El campo es requerido</ion-note>
+      <div>
+        <ion-label position="floting">Número de telefono <span class="asterisco">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="number" formControlName="phoneNumber" placeholder="ej: 33481485"/>
+        <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength" class="form-error-message">
+          <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
+          <span *ngIf="isPhoneNumberMinLength">Ingrese un número telefono valido</span>
+        </ion-note>
+      </div>
     </ion-item>
-
-    <ion-button type="submit" expand="block" color="success" [disabled]="isFormValid">      
-      <ion-spinner *ngIf="spinner" color="dark"/>
-      Registrar
-    </ion-button>
-  
+    
+    <div class="formFooter">
+      <ion-button type="numeric" class="btnRegister" color="danger" [disabled]="isFormValid">      
+        <ion-spinner *ngIf="spinner" color="dark"/>
+        Registrar
+      </ion-button>
+    </div>
   </form>
 </ion-content>

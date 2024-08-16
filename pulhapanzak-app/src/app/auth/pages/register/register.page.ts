@@ -13,6 +13,8 @@ import { RegisterDto } from '../../models/register.dto';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote]
 })
 export class RegisterPage {
+
+  asteriscoReq:string='*'
   
   private formBuilder: FormBuilder= inject(FormBuilder)
   registerDto: RegisterDto= {} as RegisterDto
@@ -65,6 +67,7 @@ export class RegisterPage {
     const control: AbstractControl | null = this.registerForm.get('dni')
     return control ? control.hasError('minLength') && control.touched : false
   }
+
   get isDniMaxLength():boolean{
     const control: AbstractControl | null = this.registerForm.get('dni')
     return control ? control.hasError('maxLength') && control.touched : false
@@ -74,6 +77,7 @@ export class RegisterPage {
     const control: AbstractControl | null = this.registerForm.get('phoneNumber')
     return control ? control.hasError('required') && control.touched : false
   }
+
   get isPhoneNumberMinLength():boolean{
     const control: AbstractControl | null = this.registerForm.get('phoneNumber')
     return control ? control.hasError('minLength') && control.touched : false

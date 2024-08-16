@@ -4,6 +4,6 @@ export interface RegisterDto{
     lastNames: string
     email: string
     password: string
-    idNumber: number
+    dni: number
     phoneNumber:number
 }
