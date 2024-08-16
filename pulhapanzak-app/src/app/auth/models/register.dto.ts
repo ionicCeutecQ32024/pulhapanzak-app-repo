@@ -1,5 +1,5 @@
 
-export interface RegisterDt0{
+export interface RegisterDto{
     names : string
     lastNames: string
     email: string
