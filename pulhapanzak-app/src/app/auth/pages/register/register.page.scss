@@ -1,0 +1,28 @@
+.title-large{
+    padding-top: 20px;
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+
+div{
+    margin-top: 25px;
+}
+
+.asterisc {
+    color: red; 
+}
+
+
+.formFooter{
+   display: flex;
+   justify-content: center;
+  
+   & .btnRegister{
+       width: 350px;
+       
+       & .spinner{
+        margin-right: 10px;
+       } 
+   }
+}

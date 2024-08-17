@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="registerForm" (ngSubmit)="save()">
+    
+    <ion-item>
+      <div>
+        <ion-label>Nombres <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input formControlName="names" placeholder="ej: Luis Eduardo"/>
+        <ion-note *ngIf="isNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div>
+        <ion-label>Apellidos <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input formControlName="lastNames" placeholder="ej: Perez Lozano"/>
+        <ion-note *ngIf="isLastNamesRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <div>
+        <ion-label>Correo electronico <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
+        <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
+          <span *ngIf="isEmailRequired">El campo es requerido</span>
+          <span *ngIf="isEmailValid">Ingrese un correo válido</span>
+        </ion-note>
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <div>
+        <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#"/>
+        <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <div>
+        <ion-label>Número de identidad <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="text" formControlName="dni" placeholder="ej: 0801199710100"/>
+        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength" class="form-error-message">
+          <span *ngIf="isDniRequired">El campo es requerido</span>
+          <span *ngIf="isDniMinLength">Ingrese un DNI válido</span>
+          <span *ngIf="isDniMaxLength">Ingrese un DNI válido</span>
+        </ion-note>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div>
+        <ion-label>Número de telefono <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="text" formControlName="phoneNumber" placeholder="ej: 33481485"></ion-input>
+        <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength" class="form-error-message">
+          <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
+          <span *ngIf="isPhoneNumberMinLength">Ingrese un número de teléfono válido</span>
+        </ion-note>
+      </div>
+    </ion-item>
+    
+    <div class="formFooter">
+      <ion-button type="submit" class="btnRegister" color="danger" [disabled]="isFormValid">      
+        <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
+        {{textBtnRegister}}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
