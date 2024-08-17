@@ -1,7 +1,9 @@
 
 .title-large{
-    padding-top: 20px;
+    padding-block: 10px;
     color: rgb(0, 204, 255);
+    background-color: black;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
 }
@@ -24,9 +26,10 @@ ion-item {
 .formFooter{
    display: flex;
    justify-content: center;
+   --background: fixed;
   
    & .btnRegister{
-       width: 350px;
+       width: 300px;
        
        & .spinner{
         margin-right: 10px;
