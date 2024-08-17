@@ -34,7 +34,7 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/*@import '@ionic/angular/css/palettes/dark.system.css';*/
 
 
 
@@ -42,4 +42,8 @@
     color: red;
     font-weight: 600;
     font-size: 13px;
+}
+
+.fondoCamera{
+    --background: url('assets/fondo-black.png') 0 0/100% 100% no-repeat;
 }
