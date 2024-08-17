@@ -6,3 +6,35 @@ ion-title{
     display: flex;
     justify-content: center;
 }
+
+.asterisc {
+    color: red; 
+}
+
+ion-item {
+    --background: none;
+    opacity: 1;
+    color: aliceblue;
+}
+
+form{
+    margin-top: 120px;
+    div{
+        margin-top: 25px;
+    }
+    .formFooter{
+        display: flex;
+        justify-content: center;
+        --background: fixed;
+       
+        & .btnRegister{
+            width: 300px;
+            
+            & .spinner{
+             margin-right: 10px;
+            } 
+        }
+     }
+    
+}
+
