@@ -92,15 +92,13 @@ export class RegisterPage {
   async save(): Promise<void> {
     this.textBtnRegister='Registrando Usuario'
     this.registerDto= this.registerForm.value as RegisterDto
-    
-   
-    
+    this.registerForm.reset()
+  
     console.log('Datos:', this.registerDto)
     
     this.spinner=true
     
-    setTimeout(() => {
-      this.registerForm.reset()
+    setTimeout(() => {    
       this.spinner=false
       this.textBtnRegister='Registrarse'
       this.presentToast();
