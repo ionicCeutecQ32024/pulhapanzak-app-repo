@@ -2,7 +2,9 @@
 import { Component, inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar, IonToast } from '@ionic/angular/standalone';
+import { ToastController } from '@ionic/angular';
+
 import { RegisterDto } from '../../models/register.dto';
 
 @Component({
@@ -10,14 +12,15 @@ import { RegisterDto } from '../../models/register.dto';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote, IonToast]
 })
 export class RegisterPage {
+  constructor(private toastController: ToastController) {}
 
   asteriscoReq:string='*'
   textBtnRegister:string='Registrarse'
   spinner:boolean=false
-  
+
   private formBuilder: FormBuilder= inject(FormBuilder)
   registerDto: RegisterDto= {} as RegisterDto
 
@@ -86,20 +89,31 @@ export class RegisterPage {
   }
  
 
-  save():void{
+  async save(): Promise<void> {
     this.textBtnRegister='Registrando Usuario'
     this.registerDto= this.registerForm.value as RegisterDto
+    
+   
     
     console.log('Datos:', this.registerDto)
     
     this.spinner=true
-
+    
     setTimeout(() => {
       this.registerForm.reset()
       this.spinner=false
       this.textBtnRegister='Registrarse'
+      this.presentToast();
     }, 5000);
   }
 
+  async presentToast(): Promise<void> {
+    const toast = await this.toastController.create({
+      message: '¡Registro exitoso!',
+      duration: 5000, 
+      position: 'bottom', 
+    });
 
+    await toast.present()
+  }
 }
