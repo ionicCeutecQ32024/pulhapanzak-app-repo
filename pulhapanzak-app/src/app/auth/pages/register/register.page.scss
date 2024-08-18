@@ -1,11 +1,14 @@
 
-ion-title{
+ion-toolbar{
+    --background: none;
+}
+
+h1{
     padding-bottom: 10px;
-    color: rgb(0, 204, 255);
-    background-color: black;
-    border-radius: 0px;
-    display: flex;
-    justify-content: center;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-weight: 700;
+    margin-bottom: 90px;
 }
 
 div{
@@ -30,6 +33,11 @@ ion-item {
   
    & .btnRegister{
        width: 300px;
+       border-radius: 50px !important;
+       border: 2px solid #fff !important;
+       background: none !important;
+       height: 50px;
+       color: #fff;
        
        & .spinner{
         margin-right: 10px;

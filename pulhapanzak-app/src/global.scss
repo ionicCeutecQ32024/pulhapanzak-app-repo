@@ -36,7 +36,8 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 /*@import '@ionic/angular/css/palettes/dark.system.css';*/
 
-
+/* azul claro #35C3F1*/
+/* azul fuerte #1F7995*/
 
 .form-error-message{
     color: red;
@@ -44,6 +45,11 @@
     font-size: 13px;
 }
 
-.fondoCamera{
-    --background: url('assets/fondo-black.png') 0 0/100% 100% no-repeat;
+.fondoRegister{
+    --background: url('assets/register.png') 0 0/100% 100% no-repeat;
+}
+
+
+.fondoLogin{
+    --background: url('assets/login-white.png') 0 0/100% 100% no-repeat;
 }

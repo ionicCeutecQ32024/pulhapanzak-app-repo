@@ -1,16 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Registro</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" class="fondoCamera">
+<ion-content [fullscreen]="true" class="fondoRegister">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Registro</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <h1>Registrate!</h1>
   <form [formGroup]="registerForm" (ngSubmit)="save()">
     
     <ion-item>
@@ -63,7 +58,7 @@
     <ion-item>
       <div>
         <ion-label>Número de telefono <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="text" formControlName="phoneNumber" placeholder="ej: 33481485"></ion-input>
+        <ion-input type="tel" formControlName="phoneNumber" placeholder="ej: 33481485"></ion-input>
         <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength" class="form-error-message">
           <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
           <span *ngIf="isPhoneNumberMinLength">Ingrese un número de teléfono válido</span>
@@ -72,10 +67,10 @@
     </ion-item>
     
     <div class="formFooter">
-      <ion-button type="submit" class="btnRegister" color="secondary" [disabled]="isFormValid">      
+      <button type="submit" class="btnRegister"  [disabled]="isFormValid">      
         <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
         {{textBtnRegister}}
-      </ion-button>
+      </button>
     </div>
   </form>
 </ion-content>

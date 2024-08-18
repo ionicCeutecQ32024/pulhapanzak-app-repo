@@ -1,10 +1,12 @@
-ion-title{
+ion-toolbar{
+    --background: none;
+}
+
+h1{
     padding-bottom: 10px;
-    color: rgb(0, 204, 255);
-    background-color: black;
-    border-radius: 0px;
-    display: flex;
-    justify-content: center;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-weight: 700;
 }
 
 .asterisc {
@@ -14,25 +16,40 @@ ion-title{
 ion-item {
     --background: none;
     opacity: 1;
-    color: aliceblue;
 }
 
 form{
-    margin-top: 120px;
+    margin-top: 240px;
     div{
         margin-top: 25px;
     }
     .formFooter{
+        margin-top: 20px;
         display: flex;
         justify-content: center;
         --background: fixed;
        
-        & .btnRegister{
+        & .btnLogin{
             width: 300px;
-            
+            height: 50px;
+            color: #fff;
+            border-radius: 50px !important;
+            background-color: #1F7995;
+
             & .spinner{
              margin-right: 10px;
             } 
+        }
+
+        & .btnRegister{
+            width: 300px;
+            height: 50px;
+            color: #1F7995;
+            border-radius: 50px !important;
+            border: 2px solid #1F7995 !important;
+            background: none !important;
+           
+            
         }
      }
     
