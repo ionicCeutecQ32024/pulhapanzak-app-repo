@@ -1,8 +1,14 @@
-.title-large{
-    padding-top: 20px;
-    color: red;
-    display: flex;
-    justify-content: center;
+
+ion-toolbar{
+    --background: none;
+}
+
+h1{
+    padding-bottom: 10px;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-weight: 700;
+    margin-bottom: 90px;
 }
 
 div{
@@ -13,13 +19,25 @@ div{
     color: red; 
 }
 
+ion-item {
+    --background: none;
+    opacity: 1;
+    color: aliceblue;
+  }
+  
 
 .formFooter{
    display: flex;
    justify-content: center;
+   --background: fixed;
   
    & .btnRegister{
-       width: 350px;
+       width: 300px;
+       border-radius: 50px !important;
+       border: 2px solid #fff !important;
+       background: none !important;
+       height: 50px;
+       color: #fff;
        
        & .spinner{
         margin-right: 10px;

@@ -1,0 +1,42 @@
+
+<ion-content [fullscreen]="true" class="fondoLogin">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+<h1>Bienvenido, Ingresa!</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="save()">
+    
+    <ion-item>
+      <div>
+        <ion-label>Correo electronico <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
+        <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
+          <span *ngIf="isEmailRequired">El campo es requerido</span>
+          <span *ngIf="isEmailValid">Ingrese un correo válido</span>
+        </ion-note>
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <div>
+        <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#"/>
+        <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
+      </div>
+    </ion-item>
+
+    <div class="formFooter">
+      <button type="submit" class="btnLogin" [disabled]="isFormValid">      
+        <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
+        {{textBtnRegister}}
+      </button>
+    </div>
+    
+    <div class="formFooter">
+      <button class="btnRegister">Registrarse</button>
+    </div>
+  </form>
+</ion-content>
