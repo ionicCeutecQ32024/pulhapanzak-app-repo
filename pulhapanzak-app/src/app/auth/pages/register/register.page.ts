@@ -73,6 +73,11 @@ export class RegisterPage {
     return control ? control.hasError('minlength') && control.touched : false;
   }
 
+  get isDniPattern(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('dni');
+    return control ? control.hasError('pattern') && control.touched : false;
+  }
+
   get isDniMaxLength(): boolean {
     const control: AbstractControl | null = this.registerForm.get('dni');
     return control ? control.hasError('maxlength') && control.touched : false;
@@ -86,6 +91,11 @@ export class RegisterPage {
   get isPhoneNumberMinLength(): boolean {
     const control: AbstractControl | null = this.registerForm.get('phoneNumber');
     return control ? control.hasError('minlength') && control.touched : false;
+  }
+
+  get isPhoneNumberPattern(): boolean {
+    const control: AbstractControl | null = this.registerForm.get('phoneNumber');
+    return control ? control.hasError('pattern') && control.touched : false;
   }
  
 

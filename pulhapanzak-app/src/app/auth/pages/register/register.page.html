@@ -47,10 +47,9 @@
       <div>
         <ion-label>Número de identidad <span class="asterisc">{{asteriscoReq}}</span></ion-label>
         <ion-input type="text" formControlName="dni" placeholder="ej: 0801199710100"/>
-        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength" class="form-error-message">
+        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength || isDniPattern" class="form-error-message">
           <span *ngIf="isDniRequired">El campo es requerido</span>
-          <span *ngIf="isDniMinLength">Ingrese un DNI válido</span>
-          <span *ngIf="isDniMaxLength">Ingrese un DNI válido</span>
+          <span *ngIf="isDniMinLength || isDniMaxLength || isDniPattern">Ingrese un DNI válido</span>
         </ion-note>
       </div>
     </ion-item>
@@ -59,9 +58,9 @@
       <div>
         <ion-label>Número de telefono <span class="asterisc">{{asteriscoReq}}</span></ion-label>
         <ion-input type="tel" formControlName="phoneNumber" placeholder="ej: 33481485"></ion-input>
-        <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength" class="form-error-message">
+        <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength || isPhoneNumberPattern" class="form-error-message">
           <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
-          <span *ngIf="isPhoneNumberMinLength">Ingrese un número de teléfono válido</span>
+          <span *ngIf="isPhoneNumberMinLength ||isPhoneNumberPattern">Ingrese un número de teléfono válido</span>
         </ion-note>
       </div>
     </ion-item>
