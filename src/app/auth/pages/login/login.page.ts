@@ -2,7 +2,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar,IonInputPasswordToggle} from '@ionic/angular/standalone';
 
 import { LoginDto } from '../../models/login.dto';
 
@@ -12,7 +12,7 @@ import { LoginDto } from '../../models/login.dto';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, FormsModule, IonHeader, IonTitle, IonToolbar, CommonModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote]
+  imports: [IonContent, FormsModule, IonHeader, IonTitle, IonToolbar, CommonModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote, IonInputPasswordToggle]
 })
 
 export class LoginPage {

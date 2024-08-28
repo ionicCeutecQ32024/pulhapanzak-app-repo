@@ -2,7 +2,7 @@
 import { Component, inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar, IonToast } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar, IonToast, IonInputPasswordToggle } from '@ionic/angular/standalone';
 import { ToastController } from '@ionic/angular';
 
 import { RegisterDto } from '../../models/register.dto';
@@ -12,7 +12,7 @@ import { RegisterDto } from '../../models/register.dto';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote, IonToast]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote, IonToast, IonInputPasswordToggle]
 })
 export class RegisterPage {
   constructor(private toastController: ToastController) {}

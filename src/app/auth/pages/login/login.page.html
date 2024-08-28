@@ -23,7 +23,9 @@
     <ion-item>
       <div>
         <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#"/>
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#">
+          <ion-input-password-toggle color="dark" slot="end"></ion-input-password-toggle>
+        </ion-input>
         <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
       </div>
     </ion-item>
