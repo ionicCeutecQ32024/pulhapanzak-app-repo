@@ -44,13 +44,28 @@ ion-item {
    & .btnRegister{
        width: 300px;
        border-radius: 50px !important;
-       border: 2px solid #fff !important;
        background: none !important;
        height: 50px;
-       color: #fff;
+       font-weight: 600;
+       color: #f1f1f1;
+       background: #979696 !important;
        
        & .spinner{
         margin-right: 10px;
        } 
    }
 }
+
+.iniciarSesion{
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    & a{
+        margin-left: 5px;
+        font-weight: 600;
+        text-decoration: none;
+        color: #979696;
+        font-style: italic;
+    }
+}    
