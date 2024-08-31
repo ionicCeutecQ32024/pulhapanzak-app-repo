@@ -17,7 +17,7 @@ import { LoginDto } from '../../models/login.dto';
 
 export class LoginPage {
   asteriscoReq:string='*'
-  textBtnRegister:string='Ingresar'
+  textBtnRegister:string='Iniciar Sesión'
   spinner:boolean=false
 
   private formBuilder: FormBuilder= inject(FormBuilder)

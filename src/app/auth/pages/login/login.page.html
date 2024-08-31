@@ -23,11 +23,16 @@
       <div>
         <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
         <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#" [ngClass]="{ 'borderInputInvalid': isPasswordRequired}">
-          <ion-input-password-toggle color="dark" slot="end"></ion-input-password-toggle>
+          <ion-input-password-toggle color="medium" slot="end"></ion-input-password-toggle>
         </ion-input>
         <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
       </div>
     </ion-item>
+
+    <div>
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
 
     <div class="formFooter">
       <button type="submit" class="btnLogin" [disabled]="isFormValid">      
@@ -36,8 +41,10 @@
       </button>
     </div>
     
-    <div class="formFooter">
-      <button class="btnRegister">Registrarse</button>
+    <div class="registrarse">
+      <p>¿No tienes Cuenta?</p>
+      <a href="/register">Registrate ahora</a>
     </div>
+      
   </form>
 </ion-content>

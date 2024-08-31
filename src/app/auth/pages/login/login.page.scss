@@ -33,7 +33,20 @@ form{
     margin-top: 140px;
     div{
         margin-top: 25px;
+        & a{
+            text-decoration: none;
+            color: #1F7995;
+            text-align: end;
+            display: block;
+            margin-right: 10px;
+            font-style: italic;
+    
+        }
+
+       
+            
     }
+
     .formFooter{
         margin-top: 20px;
         display: flex;
@@ -43,26 +56,29 @@ form{
         & .btnLogin{
             width: 300px;
             height: 50px;
-            color: #fff;
+            font-weight: 600;
+            color: #0e2e38;
             border-radius: 50px !important;
-            background-color: #1F7995;
+            background-color: #26a7ce;
 
             & .spinner{
              margin-right: 10px;
             } 
         }
+        
+    }
 
-        & .btnRegister{
-            width: 300px;
-            height: 50px;
-            color: #1F7995;
-            border-radius: 50px !important;
-            border: 2px solid #1F7995 !important;
-            background: none !important;
-           
-            
+    & .registrarse{
+        margin-top: 5px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        & a{
+            margin-left: 5px;
+            font-weight: 600;
         }
-     }
+    }
+
     
 }
 
