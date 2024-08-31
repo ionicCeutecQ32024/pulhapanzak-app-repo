@@ -11,7 +11,7 @@
     <ion-item>
       <div>
         <ion-label>Nombres <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input formControlName="names" placeholder="ej: Luis Eduardo"/>
+        <ion-input formControlName="names" placeholder="ej: Luis Eduardo" [ngClass]="{ 'borderInputInvalid': isNamesRequired }"/>
         <ion-note *ngIf="isNamesRequired" class="form-error-message">El campo es requerido</ion-note>
       </div>
     </ion-item>
@@ -19,7 +19,7 @@
     <ion-item>
       <div>
         <ion-label>Apellidos <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input formControlName="lastNames" placeholder="ej: Perez Lozano"/>
+        <ion-input formControlName="lastNames" placeholder="ej: Perez Lozano" [ngClass]="{ 'borderInputInvalid': isLastNamesRequired }"/>
         <ion-note *ngIf="isLastNamesRequired" class="form-error-message">El campo es requerido</ion-note>
       </div>
     </ion-item>
@@ -27,7 +27,7 @@
     <ion-item>
       <div>
         <ion-label>Correo electronico <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
+        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com" [ngClass]="{ 'borderInputInvalid': isEmailValid }"/>
         <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
           <span *ngIf="isEmailRequired">El campo es requerido</span>
           <span *ngIf="isEmailValid">Ingrese un correo válido</span>
@@ -38,7 +38,7 @@
     <ion-item>
       <div>
         <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#">
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#" [ngClass]="{ 'borderInputInvalid': isPasswordRequired }">
           <ion-input-password-toggle color="light" slot="end"></ion-input-password-toggle>
         </ion-input>
         <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
@@ -48,8 +48,8 @@
     <ion-item>
       <div>
         <ion-label>Número de identidad <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="text" formControlName="dni" placeholder="ej: 0801199710100"/>
-        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength || isDniPattern" class="form-error-message">
+        <ion-input type="text" formControlName="dni" placeholder="ej: 0801199710100" [ngClass]="{ 'borderInputInvalid': isDniMinLength }"/>
+        <ion-note *ngIf="isDniRequired || isDniMinLength || isDniMaxLength || isDniPattern" class="form-error-message" >
           <span *ngIf="isDniRequired">El campo es requerido</span>
           <span *ngIf="isDniMinLength || isDniMaxLength || isDniPattern">Ingrese un DNI válido</span>
         </ion-note>
@@ -59,7 +59,7 @@
     <ion-item>
       <div>
         <ion-label>Número de telefono <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="tel" formControlName="phoneNumber" placeholder="ej: 33481485"></ion-input>
+        <ion-input type="tel" formControlName="phoneNumber" placeholder="ej: 33481485" [ngClass]="{ 'borderInputInvalid': isPhoneNumberMinLength }"/>
         <ion-note *ngIf="isPhoneNumberRequired || isPhoneNumberMinLength || isPhoneNumberPattern" class="form-error-message">
           <span *ngIf="isPhoneNumberRequired">El campo es requerido</span>
           <span *ngIf="isPhoneNumberMinLength ||isPhoneNumberPattern">Ingrese un número de teléfono válido</span>

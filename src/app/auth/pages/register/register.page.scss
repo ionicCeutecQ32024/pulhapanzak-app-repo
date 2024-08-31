@@ -23,6 +23,16 @@ ion-item {
     --background: none;
     opacity: 1;
     color: aliceblue;
+    
+    & div{
+        width: 100%;
+
+        & .borderInputInvalid{
+            margin-block: 2px;
+            border: 2px solid #ff0000;
+            border-radius: 9px;
+        }
+    }
   }
   
 

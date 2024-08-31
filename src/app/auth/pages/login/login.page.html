@@ -8,11 +8,10 @@
   
 <h1>Bienvenido, Ingresa!</h1>
   <form [formGroup]="loginForm" (ngSubmit)="save()">
-    
     <ion-item>
       <div>
         <ion-label>Correo electronico <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com"/>
+        <ion-input type="email" formControlName="email" placeholder="ej: luis@gmail.com" [ngClass]="{ 'borderInputInvalid': isEmailValid  }"/>
         <ion-note *ngIf="isEmailRequired || isEmailValid" class="form-error-message">
           <span *ngIf="isEmailRequired">El campo es requerido</span>
           <span *ngIf="isEmailValid">Ingrese un correo válido</span>
@@ -23,7 +22,7 @@
     <ion-item>
       <div>
         <ion-label>Contraseña <span class="asterisc">{{asteriscoReq}}</span></ion-label>
-        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#">
+        <ion-input type="password" formControlName="password" placeholder="ej: H0ndur@$_2024#" [ngClass]="{ 'borderInputInvalid': isPasswordRequired}">
           <ion-input-password-toggle color="dark" slot="end"></ion-input-password-toggle>
         </ion-input>
         <ion-note *ngIf="isPasswordRequired" class="form-error-message">El campo es requerido</ion-note>
