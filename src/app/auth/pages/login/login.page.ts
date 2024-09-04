@@ -1,10 +1,13 @@
 
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar,IonInputPasswordToggle} from '@ionic/angular/standalone';
 
 import { LoginDto } from '../../models/login.dto';
+import { AuthService } from '../../services/auth.service';
+
 
 
 @Component({
@@ -16,9 +19,15 @@ import { LoginDto } from '../../models/login.dto';
 })
 
 export class LoginPage {
+  private _authService:AuthService= inject(AuthService)
+  private _router:Router= inject(Router)
+
   asteriscoReq:string='*'
   textBtnRegister:string='Iniciar Sesión'
   spinner:boolean=false
+
+  
+
 
   private formBuilder: FormBuilder= inject(FormBuilder)
   loginDto: LoginDto= {} as LoginDto
@@ -48,14 +57,31 @@ export class LoginPage {
     return control ? control.hasError('required') && control.touched : false
   }
 
+
+
+
+
   save(){
-    this.textBtnRegister='Ingresando'
-    this.loginDto= this.loginForm.value as LoginDto
-    this.loginForm.reset()
+    if (!this.isFormValid){
+      this.textBtnRegister='Ingresando'
+      this.loginDto= this.loginForm.value as LoginDto
+      console.log('Datos:', this.loginDto)
+      this.spinner=true
+
+      this._authService.login(this.loginDto).then(()=>{
+        this.spinner=false
+        this.loginForm.reset()
+        this._router.navigate(['/home'])
+      }).catch(()=>{
+        this.spinner=true
+        
+      })
+    }
+
   
-    console.log('Datos:', this.loginDto)
+   
+  
     
-    this.spinner=true
     
     setTimeout(() => {    
       this.spinner=false
