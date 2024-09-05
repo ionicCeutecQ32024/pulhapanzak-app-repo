@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, UserCredential, user, User } from '@angular/fire/auth';
 import { CollectionReference, DocumentReference, Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 
 import { LoginDto } from '../models/login.dto';
@@ -16,8 +16,20 @@ export class AuthService {
   private _auth: Auth =inject(Auth)
   private _firestore: Firestore= inject(Firestore)
   private _collection: CollectionReference = collection (
-    this._firestore,PATH
+    this._firestore, PATH
   )
+
+
+  async isUserLoggued(): Promise<boolean>{
+    return new Promise<boolean>((resolve, reject)=>{
+      this._auth.onAuthStateChanged((user: User | null)=>{
+        if (user)
+          resolve(true)
+        else
+          resolve(false)
+      })
+    })
+  }
 
   async createUserInFirestore(user:RegisterDto):Promise<void>{
     const docRef: DocumentReference= doc(this._collection, user.uid)
@@ -33,6 +45,11 @@ export class AuthService {
   }
 
   async login(model: LoginDto): Promise<UserCredential>{
+
+    const isUserLoggued:boolean =await this.isUserLoggued()
+    if(isUserLoggued) 
+      Promise.reject('Usuario esta logueado')
+
     return await signInWithEmailAndPassword(
       this._auth,
       model.email,
@@ -41,6 +58,10 @@ export class AuthService {
   }
 
   async signUp( model: LoginDto): Promise<UserCredential>{
+    const isUserLoggued:boolean =await this.isUserLoggued()
+    if(isUserLoggued) 
+      Promise.reject('Usuario esta logueado')
+
     return await createUserWithEmailAndPassword(
       this._auth,
       model.email,
