@@ -6,7 +6,7 @@
   </ion-header>
 
   <h1>Registrate!</h1>
-  <form [formGroup]="registerForm" (ngSubmit)="save()">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     
     <ion-item>
       <div>
@@ -68,7 +68,7 @@
     </ion-item>
     
     <div class="formFooter">
-      <button type="submit" class="btnRegister"  [disabled]="isFormValid">      
+      <button type="submit" class="btnRegister"  [disabled]="isFormValid || disabled">      
         <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
         {{textBtnRegister}}
       </button>

@@ -70,12 +70,12 @@ export class LoginPage {
       this.spinner=true
 
       this._authService.login(this.loginDto).then( async ()=>{
-        
         this.spinner=false
         this.loginForm.reset()
         this._router.navigate(['/home'])
         await this.showAlert('Ingreso Satisfactorio', false)
-      }).catch( async ()=>{
+      })
+      .catch( async ()=>{
         this.spinner=true
         await this.showAlert('Usuario o contraseña son incorrectas', true)
       })

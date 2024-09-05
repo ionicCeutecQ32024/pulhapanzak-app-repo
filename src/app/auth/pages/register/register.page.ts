@@ -1,11 +1,10 @@
-
 import { Component, inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar, IonToast, IonInputPasswordToggle } from '@ionic/angular/standalone';
-import { ToastController } from '@ionic/angular';
-
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar, IonToast, IonInputPasswordToggle, ToastController } from '@ionic/angular/standalone';
 import { RegisterDto } from '../../models/register.dto';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,15 +14,22 @@ import { RegisterDto } from '../../models/register.dto';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonLabel, IonItem, IonSpinner, ReactiveFormsModule, IonNote, IonToast, IonInputPasswordToggle]
 })
 export class RegisterPage {
-  constructor(private toastController: ToastController) {}
-
+  private _authService:AuthService= inject(AuthService)
+  private _toasController: ToastController = inject(ToastController)
+  private _router:Router= inject(Router)
+  
   asteriscoReq:string='*'
   textBtnRegister:string='Registrarse'
   spinner:boolean=false
+  disabled:boolean=false
 
   private formBuilder: FormBuilder= inject(FormBuilder)
   registerDto: RegisterDto= {} as RegisterDto
 
+  
+  constructor(private toastController: ToastController) {}
+
+  
   registerForm: FormGroup= this.formBuilder.group({
 
     names : ['', [Validators.required]],
@@ -99,29 +105,40 @@ export class RegisterPage {
   }
  
 
-  async save(): Promise<void> {
+  async onSubmit(): Promise<void> {
+    debugger
     this.textBtnRegister='Registrando Usuario'
     this.registerDto= this.registerForm.value as RegisterDto
-    this.registerForm.reset()
-  
     console.log('Datos:', this.registerDto)
     
-    this.spinner=true
-    
+    this._authService.signUp(this.registerDto).then( async (result)=>{
+      this.registerDto.uid= result.user.uid
+      
+      await this._authService.createUserInFirestore(this.registerDto).then(async () => {
+        this.spinner=true
+        this.disabled=true
+        this._router.navigate(['/home'])
+        this.registerForm.reset()
+        await this.showAlert('Usuario creado correctamente', false)
+      })
+    }).catch( async ()=>{
+      this.spinner=true
+      await this.showAlert('Ha ocurrido un error, vuelve a intentarlo!', true)
+    })
+
     setTimeout(() => {    
       this.spinner=false
+      this.disabled=false
       this.textBtnRegister='Registrarse'
-      this.presentToast();
     }, 5000);
   }
 
-  async presentToast(): Promise<void> {
-    const toast = await this.toastController.create({
-      message: '¡Registro exitoso!',
-      duration: 5000, 
-      position: 'bottom', 
-    });
-
-    await toast.present()
+  async showAlert(message:string, isError:boolean = false): Promise<void>{
+    const toast= await this._toasController.create({
+      message: message,
+      duration: 4000,
+      color: isError? 'danger': 'success'
+    })
+    toast.present()
   }
 }
