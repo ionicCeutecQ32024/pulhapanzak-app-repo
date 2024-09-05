@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
 import { LoginDto } from '../models/login.dto';
 
 @Injectable({
@@ -16,5 +16,17 @@ export class AuthService {
       model.email,
       model.password
     )
+  }
+
+  async signUp( model: LoginDto): Promise<UserCredential>{
+    return await createUserWithEmailAndPassword(
+      this._auth,
+      model.email,
+      model.password
+    )
+  }
+
+  async signOut(): Promise<void>{
+    return await this._auth.signOut()
   }
 }

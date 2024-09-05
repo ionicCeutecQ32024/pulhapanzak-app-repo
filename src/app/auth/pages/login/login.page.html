@@ -7,7 +7,7 @@
   </ion-header>
   
 <h1>Bienvenido, Ingresa!</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="save()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSuubmit()">
     <ion-item>
       <div>
         <ion-label>Correo electronico <span class="asterisc">{{asteriscoReq}}</span></ion-label>
@@ -35,7 +35,7 @@
 
 
     <div class="formFooter">
-      <button type="submit" class="btnLogin" [disabled]="isFormValid">      
+      <button type="submit" class="btnLogin" [disabled]="isFormValid || disabled">      
         <ion-spinner *ngIf="spinner" color="dark" class="spinner"/>
         {{textBtnRegister}}
       </button>
