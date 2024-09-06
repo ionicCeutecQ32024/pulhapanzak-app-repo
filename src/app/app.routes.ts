@@ -24,10 +24,10 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
     canActivate:[()=> inject(AuthGuard).canActive()]
   },
-  
+
   {
     path: 'tabs',
-    loadComponent: () => import('./tabs/tabs.page').then( m => m.TabsPage)
+    loadComponent: () => import('./shared/ui/pages/tabs/tabs.page').then( m => m.TabsPage)
   },
 
 
