@@ -5,7 +5,7 @@ import { AuthGuard } from './shared/guards/auth-guards';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'tabs/home',
     pathMatch: 'full',
   },
 
@@ -18,26 +18,11 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./auth/pages/login/login.page').then( m => m.LoginPage)
   },
-  
+
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: '',
+    loadChildren: () => import('./shared/ui/pages/tabs/tabs.routes').then( m => m.routes),
     canActivate:[()=> inject(AuthGuard).canActive()]
   },
-
-  {
-    path: 'tabs',
-    loadComponent: () => import('./shared/ui/pages/tabs/tabs.page').then( m => m.TabsPage),
-    canActivate:[()=> inject(AuthGuard).canActive()]
-  },  {
-    path: 'gallery',
-    loadComponent: () => import('./gallery/pages/gallery/gallery.page').then( m => m.GalleryPage)
-  },
-  {
-    path: 'profile',
-    loadComponent: () => import('./profile/pages/profile/profile.page').then( m => m.ProfilePage)
-  },
-
-
 
 ];
