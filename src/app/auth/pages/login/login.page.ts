@@ -72,7 +72,7 @@ export class LoginPage {
       this._authService.login(this.loginDto).then( async ()=>{
         this.spinner=false
         this.loginForm.reset()
-        this._router.navigate(['/home'])
+        this._router.navigate(['/tabs/home'])
         await this.showAlert('Ingreso Satisfactorio', false)
       })
       .catch( async ()=>{

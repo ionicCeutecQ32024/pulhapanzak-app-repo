@@ -117,7 +117,7 @@ export class RegisterPage {
       await this._authService.createUserInFirestore(this.registerDto).then(async () => {
         this.spinner=true
         this.disabled=true
-        this._router.navigate(['/home'])
+        this._router.navigate(['/tabs/home'])
         this.registerForm.reset()
         await this.showAlert('Usuario creado correctamente', false)
       })
