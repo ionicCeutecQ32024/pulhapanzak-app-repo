@@ -24,7 +24,6 @@ import {
   IonToolbar,
   ToastController,
 } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
 import { ProfileService } from '../../services/profile.service';
 
 @Component({
